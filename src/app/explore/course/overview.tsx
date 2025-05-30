@@ -8,7 +8,7 @@ export function Overview() {
    return (
       <div>
          <div className="px-4 py-4">
-            <h3 className="mb-2 font-bold text-lg">About This Course</h3>
+            <h3 className="mb-3 font-medium text-lg">About This Course</h3>
             <p className="text-gray-700">
                Master web development from scratch with this comprehensive course. Learn HTML, CSS,
                JavaScript, React, and Node.js through practical projects and real-world
@@ -22,7 +22,7 @@ export function Overview() {
 
          {/* What You'll Learn */}
          <div className="px-4 py-4">
-            <h3 className="mb-3 font-bold text-lg">What You&apos;ll Learn</h3>
+            <h3 className="mb-3 font-medium text-lg">What You&apos;ll Learn</h3>
             <CheckList />
          </div>
 

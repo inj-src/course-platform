@@ -6,15 +6,17 @@ import { Button } from "@/components/ui/button";
 import { CheckMark } from "@/components/ui/checkMark";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Overview } from "./overview";
+import { Content } from "./content";
+import { Reviews } from "./reviews";
 
 export default function CourseDetails() {
    return (
-      <div className="bg-white mx-auto pb-28 max-w-md min-h-screen">
+      <div className="bg-white mx-auto pb-28 w-full max-w-3xl min-h-screen">
          {/* Header */}
          <HeaderNavigation title="Course Details" backHref="/" />
 
          {/* Course Banner */}
-         <div className="relative w-full h-48">
+         <div className="relative w-full aspect-video">
             <Image
                src="https://placehold.co/400"
                alt="Web Development Course"
@@ -66,9 +68,7 @@ export default function CourseDetails() {
                Enroll Now
             </Button>
          </div>
-
          <ViewTabs />
-
          <EnrollButton />
       </div>
    );
@@ -93,11 +93,11 @@ function ViewTabs() {
          <TabsContent value="overview" className="min-h-[400px]">
             <Overview />
          </TabsContent>
-         <TabsContent value="content" className="min-h-[400px]">
-            Change your password here.
+         <TabsContent value="content" className="px-5 min-h-[400px]">
+            <Content />
          </TabsContent>
          <TabsContent value="reviews" className="min-h-[400px]">
-            Change your password here.
+            <Reviews />
          </TabsContent>
       </Tabs>
    );
@@ -105,7 +105,7 @@ function ViewTabs() {
 
 function EnrollButton() {
    return (
-      <div className="right-0 bottom-0 left-0 fixed bg-white mx-auto p-4 border-gray-200 border-t max-w-md">
+      <div className="right-0 bottom-0 left-0 fixed bg-white mx-auto p-4 border-gray-200 border-t max-w-3xl">
          <div className="flex justify-between items-center mb-2">
             <div>
                <span className="font-bold text-xl">$49.99</span>

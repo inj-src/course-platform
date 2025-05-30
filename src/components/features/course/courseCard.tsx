@@ -4,19 +4,20 @@ type props = {
    courseImageUrl: string;
    courseName?: string;
    children: React.ReactNode;
-   size?: "small" | "default";
+   size?: "small" | "default" | "full";
 };
 
 const sizeClasses = {
-   small: ["min-w-[160px]", "h-[96px]"],
-   default: ["min-w-[200px]", "h-[120px]"],
+   small: "w-[160px]",
+   full: "w-full",
+   default: "w-[200px]",
 };
 
 export function CourseCard({ courseImageUrl, courseName, children, size = "default" }: props) {
-   const [width, height] = sizeClasses[size];
+   const width = sizeClasses[size];
    return (
-      <div className={`border border-gray-200 rounded-lg overflow-hidden ${width}`}>
-         <div className={`relative ${height}`}>
+      <div className={`border border-gray-200 rounded-lg overflow-hidden ${width} shrink-0`}>
+         <div className={`relative aspect-[4/3]`}>
             <Image
                src={courseImageUrl}
                alt={courseName || "Course Image"}
