@@ -3,37 +3,12 @@
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import { login } from "@/data/auth";
-import { useRouter } from "next/navigation";
 
 export default function Page() {
    const [showPassword, setShowPassword] = useState(false);
    const [rememberMe, setRememberMe] = useState(false);
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
-   const [error, setError] = useState("");
-   const [isLoading, setIsLoading] = useState(false);
-   const router = useRouter();
-
-   const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-      setError("");
-      setIsLoading(true);
-
-      try {
-         const result = await login(email, password);
-         if (result.success && result.user) {
-            router.push("/"); // Redirect to explore page after successful login
-         } else {
-            setError(result.message || "Login failed");
-         }
-      } catch (err: unknown) {
-         console.error("Login error:", err);
-         setError("An error occurred. Please try again.");
-      } finally {
-         setIsLoading(false);
-      }
-   };
 
    return (
       <div className="bg-white mx-auto w-full max-w-3xl min-h-screen">
@@ -41,9 +16,7 @@ export default function Page() {
          <div className="px-6 py-12">
             <h1 className="mb-8 font-bold text-2xl">Welcome Back</h1>
 
-            <form className="space-y-6" onSubmit={handleSubmit}>
-               {error && <p className="text-red-500 text-sm">{error}</p>}
-
+            <form className="space-y-6">
                <div>
                   <label className="block mb-2 font-medium text-gray-700 text-sm">Email</label>
                   <input
@@ -101,13 +74,8 @@ export default function Page() {
 
                <button
                   type="submit"
-                  disabled={isLoading}
-                  className={`block bg-blue-500 py-3 rounded-md w-full font-medium text-white text-center ${
-                     isLoading ? "opacity-70 cursor-not-allowed" : ""
-                  }`}
-               >
-                  {isLoading ? "Signing in..." : "Sign In"}
-               </button>
+                  className={`block bg-blue-500 py-3 rounded-md w-full font-medium text-white text-center`}
+               ></button>
             </form>
 
             <div className="mt-8">
@@ -122,7 +90,6 @@ export default function Page() {
 
                <button
                   type="button"
-                  disabled={isLoading}
                   className="flex justify-center items-center bg-gray-50 mt-4 py-3 border border-gray-300 rounded-md w-full"
                >
                   <svg className="mr-3 w-5 h-5" viewBox="0 0 24 24">
