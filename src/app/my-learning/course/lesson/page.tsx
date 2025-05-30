@@ -6,7 +6,14 @@ import { Button } from "@/components/ui/button";
 import CheckList from "@/components/features/list/checkList";
 import Link from "next/link";
 
-export function Lesson() {
+type props = {
+   searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function Page({ searchParams }: props) {
+   const { courseId, chapterIndex, lessonIndex } = searchParams;
+   if (!courseId || !chapterIndex || !lessonIndex) return <p>How we even get here :)</p>;
+
    return (
       <div className="bg-white mx-auto pb-16 w-full max-w-3xl min-h-screen">
          {/* Header */}
@@ -137,7 +144,7 @@ export function Lesson() {
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-between items-center pt-3 border-gray-200 border-t text-gray-500">
+            <div className="flex justify-between items-center mb-3 border-gray-200 text-gray-500">
                <Link href="/" className="flex items-center">
                   <ArrowLeft />
                </Link>

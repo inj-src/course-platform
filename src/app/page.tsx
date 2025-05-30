@@ -20,10 +20,10 @@ export default function App() {
 
          {/* Trending Now */}
          <div className="mb-6 [&>*]:px-5">
-            <TitleNavigation title="Trending Courses" />
+            <TitleNavigation title="Trending Courses" href="/explore" />
 
             <div className="flex gap-4 pb-2 overflow-x-auto">
-               <CourseCard courseImageUrl="https://placehold.co/400">
+               <CourseCard courseImageUrl="https://placehold.co/400" href="/explore/course">
                   <CourseCardPrice
                      courseName="Photography Essential"
                      instructor="David Kim"

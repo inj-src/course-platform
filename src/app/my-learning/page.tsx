@@ -48,7 +48,11 @@ export default function Page() {
          <div className="mt-6 mb-6 [&>*]:px-5">
             <TitleNavigation title="Continue Learning" noAction />
             <div className="flex gap-4 pb-2 overflow-x-auto">
-               <CourseCard size="small" courseImageUrl="https://placehold.co/400">
+               <CourseCard
+                  size="small"
+                  courseImageUrl="https://placehold.co/400"
+                  href="/my-learning/course?courseId=23"
+               >
                   <CourseCardProgress
                      courseName="React full course"
                      completedLessons={12}
